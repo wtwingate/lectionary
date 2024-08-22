@@ -5,11 +5,11 @@ class Calendar
 
   def initialize(date)
     @date = date
-    @fixed = self.calc_fixed
-    @moveable = self.calc_moveable
-    @year = self.calc_year
-    @season = self.calc_season
-    @days = self.calc_days
+    @fixed = calc_fixed
+    @moveable = calc_moveable
+    @year = calc_year
+    @season = calc_season
+    @days = calc_days
   end
 
   private
@@ -67,12 +67,12 @@ class Calendar
 
   def calc_days
     days = []
-    days << self.principals
-    days << self.holy_week
-    days << self.easter_week
-    days << self.sundays if @date.sunday?
-    days << self.red_letters
-    days << self.black_letters
+    days << principals
+    days << holy_week
+    days << easter_week
+    days << sundays if @date.sunday?
+    days << red_letters
+    days << black_letters
     days.compact
   end
 
@@ -116,12 +116,12 @@ class Calendar
 
   def sundays
     case @season
-    when "Advent" then self.advent_sundays
-    when "Christmas" then self.christmas_sundays
-    when "Epiphany" then self.epiphany_sundays
-    when "Lent" then self.lent_sundays
-    when "Easter" then self.easter_sundays
-    when "Pentecost" then self.pentecost_sundays
+    when "Advent" then advent_sundays
+    when "Christmas" then christmas_sundays
+    when "Epiphany" then epiphany_sundays
+    when "Lent" then lent_sundays
+    when "Easter" then easter_sundays
+    when "Pentecost" then pentecost_sundays
     end
   end
 
