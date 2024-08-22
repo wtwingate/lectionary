@@ -1,4 +1,6 @@
 class Day < ApplicationRecord
+  has_many :collects
+
   VALID_YEARS = [ "A", "B", "C" ]
   VALID_SEASONS = [ "Advent", "Christmas", "Epiphany", "Lent", "Easter", "Pentecost" ]
   VALID_COLORS = [ "violet", "white", "green", "red", "blue", "rose" ]
