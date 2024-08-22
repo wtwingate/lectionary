@@ -31,5 +31,13 @@ class DaysController < ApplicationController
 
   def show
     @day = Day.find(params[:id])
+
+    passages = @day.lessons.map do |lesson|
+      lesson.references.map do |reference|
+        Esv.new(reference, "html").fetch_passages
+      end
+    end
+
+    @passages = passages.flatten
   end
 end

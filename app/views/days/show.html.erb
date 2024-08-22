@@ -2,4 +2,8 @@
   <h1 class="text-4xl font-bold">
     <%= @day.name %><%= ": #{@day.service}" if @day.service %>
   </h1>
+
+  <% @passages.each do |passage| %>
+    <div class="[&>h2]:mt-8 [&>h2]:text-2xl [&>h2]:font-bold [&>p]:my-4"><%= passage.html_safe %></div>
+  <% end %>
 </div>
