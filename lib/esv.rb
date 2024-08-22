@@ -6,12 +6,12 @@ class Esv
     @api_key = ENV["ESV_API_KEY"]
   end
 
-  def fetch_html
-    JSON.parse(api_query("html"))["passages"]
+  def fetch_text
+    JSON.parse(api_query("text"))["passages"].join.gsub(/[\[\]]/, "")
   end
 
-  def fetch_text
-    JSON.parse(api_query("text"))["passages"]
+  def fetch_html
+    JSON.parse(api_query("html"))["passages"].join
   end
 
   private

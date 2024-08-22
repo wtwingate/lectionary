@@ -31,14 +31,16 @@ class DaysController < ApplicationController
 
   def show
     @day = Day.find(params[:id])
-    @html_passages = []
-    @text_passages = ""
+    @passages_text = ""
+    @passages_html = ""
 
     @day.lessons.each do |lesson|
-      lesson.references.map do |reference|
-        esv = Esv.new(reference)
-        @html_passages << esv.fetch_html.join
-        @text_passages << esv.fetch_text.join.gsub(/[\[\]]/, "")
+      lesson.references.each do |reference|
+        passage = lesson.passages.find_or_create_by(
+          reference: reference
+        )
+        @passages_text << passage[:esv_text]
+        @passages_html << passage[:esv_html]
       end
     end
   end
