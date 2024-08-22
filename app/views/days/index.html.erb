@@ -1,1 +1,27 @@
-<h1 class="text-4xl font-bold">Lectionary</h1>
+<div>
+  <h1 class="text-4xl font-bold">Lectionary</h1>
+
+  <div class="my-8">
+    <%= form_with url: "/search", method: :get do |form| %>
+      <%= form.label :start_date, "Start:" %>
+      <%= form.date_field :start_date %>
+      <%= form.label :end_date, "End:" %>
+      <%= form.date_field :end_date %>
+      <%= form.submit "Search" %>
+    <% end %>
+  </div>
+
+  <% @days.each do |day| %>
+    <h2 class="mt-4 font-bold text-2xl">
+      <a href="<%= day_path(day) %>">
+        <%= day.name %><%= ": #{day.service}" if day.service %>
+      </a>
+    </h2>
+    <p><%= "#{day.season} — Year #{day.year}" %></p>
+    <ul>
+      <% day.lessons.each do |lesson| %>
+        <li class="list-disc list-inside"><%= lesson.print_references %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
