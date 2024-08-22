@@ -1,5 +1,5 @@
 class Date
-  def easter(year, method)
+  def self.easter(year, method)
     # Calculates the date of Easter for the given year using three
     # different methods:
     #

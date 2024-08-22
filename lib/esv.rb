@@ -39,7 +39,10 @@ class Esv
   def text_params
     # https://api.esv.org/docs/passage-text/
     {
-      q: @reference
+      q: @reference,
+      include_footnotes: false,
+      include_headings: false,
+      include_short_copyright: false
     }
   end
 end

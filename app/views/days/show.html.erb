@@ -3,7 +3,22 @@
     <%= @day.name %><%= ": #{@day.service}" if @day.service %>
   </h1>
 
-  <% @passages.each do |passage| %>
-    <div class="[&>h2]:mt-8 [&>h2]:text-2xl [&>h2]:font-bold [&>p]:my-4"><%= passage.html_safe %></div>
+  <div data-controller="clipboard">
+    <button data-action="clipboard#copy" title="Copy to clipboard">
+      Copy
+    </button>
+    <span data-clipboard-target="copiedIndicator" class="hidden text-green-700 font-semibold">
+      copied!
+    </span>
+  </div>
+
+  <% @html_passages.each do |passage| %>
+    <div class="[&>h2]:mt-8 [&>h2]:text-2xl [&>h2]:font-bold [&>p]:my-4">
+      <%= passage.html_safe %>
+    </div>
+  <% end %>
+
+  <%= javascript_tag do %>
+    textPassages = `<%= @text_passages %>`;
   <% end %>
 </div>
