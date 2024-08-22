@@ -1,5 +1,6 @@
 class Day < ApplicationRecord
   has_many :collects
+  has_many :lessons
 
   VALID_YEARS = [ "A", "B", "C" ]
   VALID_SEASONS = [ "Advent", "Christmas", "Epiphany", "Lent", "Easter", "Pentecost" ]
