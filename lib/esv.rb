@@ -41,8 +41,7 @@ class Esv
     {
       q: @reference,
       include_footnotes: false,
-      include_headings: false,
-      include_short_copyright: false
+      include_headings: false
     }
   end
 end

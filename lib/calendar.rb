@@ -73,16 +73,15 @@ class Calendar
     days << sundays if @date.sunday?
     days << red_letters
     days << black_letters
+    days << eves
     days.compact
   end
 
   def principals
     case @date
-    when @fixed[:christmas] - 1.day then "Christmas Eve"
     when @fixed[:christmas] then "Christmas Day"
     when @fixed[:epiphany] then "The Epiphany"
     when @moveable[:ash] then "Ash Wednesday"
-    when @moveable[:easter] - 1.day then "Easter Eve"
     when @moveable[:easter] then "Easter Day"
     when @moveable[:ascension] then "Ascension Day"
     when @moveable[:pentecost] then "Day of Pentecost"
@@ -251,5 +250,12 @@ class Calendar
   end
 
   def black_letters
+  end
+
+  def eves
+    case @date
+    when @fixed[:christmas] - 1.day then "Christmas Eve"
+    when @moveable[:easter] - 1.day then "Easter Eve"
+    end
   end
 end
