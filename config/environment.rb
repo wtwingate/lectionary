@@ -1,7 +1,7 @@
 # Load the Rails application.
 require_relative "application"
 
-# Load modules in /lib
+# Load /lib modules
 require "easter"
 
 # Initialize the Rails application.
