@@ -29,17 +29,20 @@ class DaysController < ApplicationController
 
   def show
     @day = Day.find(params[:id])
-    @passages_text = ""
-    @passages_html = ""
 
+    passages_text = []
+    passages_html = []
     @day.lessons.each do |lesson|
       lesson.references.each do |reference|
         passage = lesson.passages.find_or_create_by(
           reference: reference
         )
-        @passages_text << passage[:esv_text]
-        @passages_html << passage[:esv_html]
+        passages_text << passage[:esv_text]
+        passages_html << passage[:esv_html]
       end
     end
+
+    @passages_text = passages_text.join("\n\n")
+    @passages_html = passages_html.join
   end
 end

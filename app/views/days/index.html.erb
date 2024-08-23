@@ -1,7 +1,7 @@
-<h1 class="text-6xl font-bold text-center">The Lectionary</h1>
+<h1 class="my-24 text-6xl font-bold text-center">The Lectionary</h1>
 
 <%= form_with url: "/search", method: :get do |form| %>
-  <div class="flex gap-8 mt-24 mb-8 mx-auto max-w-max py-8 px-16 bg-slate-50 rounded shadow-xl">
+  <div class="flex gap-8 mt-24 mb-8 mx-auto max-w-max py-8 px-16 bg-neutral-100 rounded shadow-xl">
     <div>
       <%= form.label :start_date, "Start:", class: "mr-2 font-bold" %>
       <%= form.date_field :start_date %>
@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="max-w-max mx-auto ">
-    <%= form.submit "Search", class: "py-2 px-8 bg-slate-700 hover:bg-slate-800 transition text-slate-50 text-xl font-bold shadow rounded" %>
+    <%= form.submit "Search", class: "py-2 px-8 bg-red-700 hover:bg-neutral-950 transition text-neutral-50 text-xl font-bold shadow rounded" %>
   </div>
 <% end %>
 
