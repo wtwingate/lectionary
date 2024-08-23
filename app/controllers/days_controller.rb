@@ -13,20 +13,18 @@ class DaysController < ApplicationController
     dates = (start_date..end_date).to_a
     calendars = dates.map { |date| Calendar.new(date) }
 
-    days = []
+    @results = {}
     calendars.each do |calendar|
       next if calendar.days.empty?
 
       calendar.days.each do |name|
-        matches = Day.where(name: name, year: calendar.year)
-        matches.each do |match|
-          match[:season] = calendar.season if match[:season].nil?
+        days = Day.where(name: name, year: calendar.year)
+        days.each do |day|
+          day[:season] = calendar.season if day[:season].nil?
         end
-        days += matches
+        @results[calendar.date] = days
       end
     end
-
-    @days = days
   end
 
   def show

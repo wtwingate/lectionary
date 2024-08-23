@@ -18,9 +18,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto my-24 px-5 flex">
+  <body class="container mx-auto p-4 bg-neutral-100 text-900">
+    <%= render "layouts/header" %>
+    <main class="pt-24 pb-8">
       <%= yield %>
     </main>
+    <%= render "layouts/footer" %>
   </body>
 </html>
