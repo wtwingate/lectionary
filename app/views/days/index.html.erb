@@ -17,25 +17,31 @@
 <% end %>
 
 <% @results.each do |date, days| %>
-  <div>
-    <h2 class="mt-4 font-bold text-2xl">
+  <div class="max-w-screen-md mx-auto my-8 p-4 bg-neutral-100 rounded shadow-xl">
+    <h2 class="font-bold text-2xl text-center">
       <%= date.to_formatted_s(:long_ordinal) %>
     </h2>
 
     <% days.each do |day| %>
-      <h3 class="mt-4 font-bold text-2xl underline">
-        <a href="<%= day_path(day) %>">
-          <%= day.name %><%= ": #{day.service}" if day.service %>
-        </a>
-      </h3>
+      <div class="py-4 px-16 flex flex-wrap justify-between gap-4">
+        <div>
+          <h3 class="font-bold text-2xl underline">
+            <a href="<%= day_path(day) %>">
+              <%= day.name %><%= ": #{day.service}" if day.service %>
+            </a>
+          </h3>
+          <p><%= "Year #{day.year}" %></p>
+          <p><%= day.season %></p>
+        </div>
 
-      <p><%= "#{day.season} — Year #{day.year}" %></p>
-
-      <ul>
-        <% day.lessons.each do |lesson| %>
-          <li class="list-disc list-inside"><%= lesson.print_references %></li>
-        <% end %>
-      </ul>
+        <div>
+          <ul>
+            <% day.lessons.each do |lesson| %>
+              <li class="list-disc list-inside"><%= lesson.print_references %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     <% end %>
   </div>
 <% end %>
