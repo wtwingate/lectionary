@@ -1,0 +1,2 @@
+class Psalm < ApplicationRecord
+end

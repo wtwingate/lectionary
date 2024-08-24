@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_23_052734) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_24_214911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,7 +51,25 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_23_052734) do
     t.index ["lesson_id"], name: "index_passages_on_lesson_id"
   end
 
+  create_table "psalms", force: :cascade do |t|
+    t.integer "number"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "verses", force: :cascade do |t|
+    t.integer "number"
+    t.text "first_half"
+    t.text "second_half"
+    t.bigint "psalm_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["psalm_id"], name: "index_verses_on_psalm_id"
+  end
+
   add_foreign_key "collects", "days"
   add_foreign_key "lessons", "days"
   add_foreign_key "passages", "lessons"
+  add_foreign_key "verses", "psalms"
 end
