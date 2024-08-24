@@ -12,20 +12,20 @@
     </div>
   </div>
   <div class="max-w-max mx-auto ">
-    <%= form.submit "Search", class: "py-2 px-8 bg-red-700 hover:bg-neutral-950 transition text-neutral-50 text-xl font-bold shadow rounded" %>
+    <%= form.submit "Search", class: "py-2 px-8 bg-red-600 hover:bg-neutral-950 transition text-neutral-50 text-xl font-bold shadow rounded" %>
   </div>
 <% end %>
 
 <% @results.each do |date, days| %>
-  <div class="max-w-screen-md mx-auto my-8 p-4 bg-neutral-100 rounded shadow-xl">
-    <h2 class="font-bold text-2xl text-center">
+  <div class="max-w-screen-md mx-auto my-8 bg-neutral-100 rounded overflow-hidden shadow-xl hover:scale-105 transition">
+    <h2 class="py-4 font-bold text-2xl text-center">
       <%= date.to_formatted_s(:long_ordinal) %>
     </h2>
 
     <% days.each do |day| %>
-      <div class="py-4 px-16 flex flex-wrap justify-between gap-4">
+      <div class="py-4 px-16 flex flex-wrap justify-between gap-4 bg-<%= day.color %>">
         <div>
-          <h3 class="font-bold text-2xl underline">
+          <h3 class="mb-4 font-bold text-2xl underline">
             <a href="<%= day_path(day) %>">
               <%= day.name %><%= ": #{day.service}" if day.service %>
             </a>
