@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="clipboard"
 export default class extends Controller {
   static targets = [
-    "copiedIndicator"
+    "copyIcon"
   ]
 
   connect() {
@@ -17,11 +17,13 @@ export default class extends Controller {
     navigator.clipboard.writeText(textPassages);
 
     // show the copied indicator
-    this.copiedIndicatorTarget.classList.remove("hidden");
+    this.copyIconTarget.classList.remove("fa-regular", "fa-copy");
+    this.copyIconTarget.classList.add("fa-solid", "fa-check");
 
     // hide the copied indicator after 2 seconds
     setTimeout(() => {
-      this.copiedIndicatorTarget.classList.add("hidden");
+      this.copyIconTarget.classList.remove("fa-solid", "fa-check");
+      this.copyIconTarget.classList.add("fa-regular", "fa-copy");
     }, 2000)
   }
 }
