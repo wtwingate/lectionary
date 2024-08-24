@@ -2,12 +2,12 @@ require "net/http"
 
 class Esv
   def initialize(reference)
-    @reference = reference
+    @reference = reference.gsub(/[\(\)]/, "")
     @api_key = ENV["ESV_API_KEY"]
   end
 
   def fetch_text
-    JSON.parse(api_query("text"))["passages"].join.gsub(/[\[\]]/, "")
+    JSON.parse(api_query("text"))["passages"].join("\n\n").gsub(/[\[\]]/, "")
   end
 
   def fetch_html
