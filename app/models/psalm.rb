@@ -15,7 +15,7 @@ class Psalm < ApplicationRecord
   def get_verses_by_reference(reference)
     if reference.include?(":")
       verse_numbers = parse_verse_numbers(reference)
-      verse_numbers.map { |number| verses.find(number: number) }
+      verse_numbers.map { |number| verses.find_by(number: number) }
     else
       verses.all
     end

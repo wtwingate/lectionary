@@ -10,6 +10,8 @@
 
 require "json"
 
+# Seed Lectionary data
+
 lectionary_file = File.open("db/lectionary.json").read
 lectionary_data = JSON.parse(lectionary_file)
 
@@ -32,6 +34,26 @@ lectionary_data.each do |data|
   data["lessons"].each do |lesson|
     day.lessons.find_or_create_by!(
       references: lesson
+    )
+  end
+end
+
+# Seed Psalter data
+
+psalter_file = File.open("db/psalter.json").read
+psalter_data = JSON.parse(psalter_file)
+
+psalter_data.each do |data|
+  psalm = Psalm.find_or_create_by!(
+    number: data["number"],
+    title: data["title"]
+  )
+
+  data["verses"].each do |verse|
+    psalm.verses.find_or_create_by!(
+      number: verse["number"],
+      first_half: verse["firstHalf"],
+      second_half: verse["secondHalf"]
     )
   end
 end
