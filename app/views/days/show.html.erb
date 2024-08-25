@@ -17,11 +17,16 @@
     <p class="my-4"><%= collect.text %></p>
   <% end %>
 
-  <div class="[&>h2]:mt-8 [&>h2]:text-2xl [&>h2]:font-bold [&>p]:my-4">
-    <%= @passages_html.html_safe %>
+  <div class="[&>p]:my-4">
+    <% @day.lessons.each do |lesson| %>
+      <h2 class="mt-8 text-2xl font-bold">
+        <%= lesson.references.first %>
+      </h2>
+      <%= lesson.passages.first.html.html_safe %>
+    <% end %>
   </div>
 
   <%= javascript_tag do %>
-    textPassages = `<%= @passages_text %>`;
+    copyText = `<%= @copy_text.join("\n\n") %>`;
   <% end %>
 </div>

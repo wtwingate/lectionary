@@ -14,7 +14,7 @@ export default class extends Controller {
     event.preventDefault();
 
     // copy the content from the sourceTarget to the clipboard
-    navigator.clipboard.writeText(textPassages);
+    navigator.clipboard.writeText(copyText);
 
     // show the copied indicator
     this.copyIconTarget.classList.remove("fa-regular", "fa-copy");

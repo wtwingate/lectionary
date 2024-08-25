@@ -7,6 +7,14 @@ class Passage < ApplicationRecord
 
   before_validation :fetch_esv, :get_psalm
 
+  def text
+    reference.starts_with?("Psalm") ? psalm_text : esv_text
+  end
+
+  def html
+    reference.starts_with?("Psalm") ? psalm_html : esv_html
+  end
+
   private
 
   def fetch_esv

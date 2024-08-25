@@ -5,21 +5,21 @@ class Psalm < ApplicationRecord
   validates :title, presence: true
 
   def get_text(reference)
-    psalm_text = "#{reference}\n\n"
+    psalm_text = []
     verses = get_verses_by_reference(reference)
     verses.each do |verse|
-      psalm_text << "#{verse.number} #{verse.first_half} *\n\t#{verse.second_half}\n\n"
+      psalm_text << "#{verse.number} #{verse.first_half} *\n    #{verse.second_half}"
     end
-    psalm_text
+    psalm_text.join("\n\n")
   end
 
   def get_html(reference)
-    psalm_html = "<h2>#{reference}</h2>"
+    psalm_html = []
     verses = get_verses_by_reference(reference)
     verses.each do |verse|
-      psalm_html << "<p><b>#{verse.number}</b> #{verse.first_half} *<br>&nbsp;&nbsp;#{verse.second_half}</p>"
+      psalm_html << "<p><b>#{verse.number}</b> #{verse.first_half}*<br>&nbsp;&nbsp;#{verse.second_half}</p>"
     end
-    psalm_html
+    psalm_html.join
   end
 
   private
