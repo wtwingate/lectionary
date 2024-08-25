@@ -19,7 +19,7 @@ class Passage < ApplicationRecord
   def get_psalm
     if reference.starts_with?("Psalm")
       number = reference.delete_prefix("Psalm ").split(":")[0]
-      psalm = Psalm.find(number: number)
+      psalm = Psalm.find_by(number: number)
       self.psalm_text = psalm.get_text(reference)
       self.psalm_html = psalm.get_html(reference)
     end

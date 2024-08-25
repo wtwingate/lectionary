@@ -37,8 +37,13 @@ class DaysController < ApplicationController
         passage = lesson.passages.find_or_create_by(
           reference: reference
         )
-        passages_text << passage[:esv_text]
-        passages_html << passage[:esv_html]
+        if reference.include?("Psalm")
+          passages_text << passage[:psalm_text]
+          passages_html << passage[:psalm_html]
+        else
+          passages_text << passage[:esv_text]
+          passages_html << passage[:esv_html]
+        end
       end
     end
 
