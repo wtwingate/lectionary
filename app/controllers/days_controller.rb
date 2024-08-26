@@ -32,11 +32,10 @@ class DaysController < ApplicationController
     @copy_text = []
 
     @day.lessons.each do |lesson|
-      lesson.references.each do |reference|
-        lesson.passages.find_or_create_by(reference: reference)
-      end
+      lesson.passages.each { |passage| passage.fetch_missing_data }
+
       @copy_text << lesson.passages.first.reference
-      @copy_text << lesson.passages.first.text
+      @copy_text << lesson.passages.first.get_text
     end
   end
 end
