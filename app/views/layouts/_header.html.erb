@@ -1,4 +1,4 @@
-<header class="p-8 bg-neutral-100 text-neutral-900 shadow">
+<header class="p-8 bg-neutral-100 text-neutral-950 shadow">
   <div class="container mx-auto flex justify-between">
     <a href="<%= root_path %>" class="text-xl font-bold">
       lectionary2019.com
@@ -8,5 +8,29 @@
       <a href="<%= about_path %>">About</a>
       <a href="<%= resources_path %>">Resources</a>
     </nav>
+  </div>
+
+  <div id="hamburgerMenu" class="grid place-content-center">
+    <div class="
+      w-16
+      h-2
+      bg-neutral-950
+      rounded-full
+      before:content-['']
+      before:absolute
+      before:w-16
+      before:h-2
+      before:bg-neutral-950
+      before:rounded-full
+      before:-translate-y-4
+      after:content-['']
+      after:absolute
+      after:w-16
+      after:h-2
+      after:bg-neutral-950
+      after:rounded-full
+      after:translate-y-4
+      ">
+    </div>
   </div>
 </header>
