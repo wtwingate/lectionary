@@ -12,23 +12,20 @@
     </div>
   </div>
 
-  <h2 class="text-2xl mt-8 font-bold text-<%= @day.color %>">
+  <h2 class="text-2xl mt-8 font-bold">
     Collect of the Day
   </h2>
   <% @day.collects.each do |collect| %>
     <p class="my-4"><%= collect.text %></p>
   <% end %>
 
-  <div class="[&>p]:my-4">
-    <% @day.lessons.each do |lesson| %>
-      <h2 class="mt-8 text-2xl font-bold text-<%= @day.color %>">
-        <%= lesson.passages.first.reference %>
-      </h2>
-      <%= lesson.passages.first.get_html.html_safe %>
+  <div class="[&>p]:my-4 [&>h2]:text-2xl [&>h2]:mt-8 [&>h2]:font-bold">
+    <% @lessons_html.each do |lesson_html| %>
+      <%= lesson_html.html_safe %>
     <% end %>
   </div>
 
   <%= javascript_tag do %>
-    copyText = `<%= @copy_text.join("\n\n") %>`;
+    copyText = `<%= @lessons_text.join("\n\n") %>`;
   <% end %>
 </div>

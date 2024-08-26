@@ -29,13 +29,16 @@ class DaysController < ApplicationController
 
   def show
     @day = Day.find(params[:id])
-    @copy_text = []
+    @lessons_html = []
+    @lessons_text = []
 
     @day.lessons.each do |lesson|
       lesson.passages.each { |passage| passage.fetch_missing_data }
 
-      @copy_text << lesson.passages.first.reference
-      @copy_text << lesson.passages.first.get_text
+      @lessons_html << lesson.passages.first.get_html
+
+      @lessons_text << lesson.passages.first.reference
+      @lessons_text << lesson.passages.first.get_text
     end
   end
 end

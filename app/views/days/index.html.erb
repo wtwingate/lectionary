@@ -1,7 +1,7 @@
 <h1 class="my-24 text-6xl font-bold text-center">The Lectionary</h1>
 
 <%= form_with url: "/search", method: :get do |form| %>
-  <div class="flex gap-8 mt-24 mb-8 mx-auto max-w-max py-8 px-16 bg-neutral-100 rounded shadow-xl">
+  <div class="flex flex-wrap gap-8 justify-center mt-24 mb-8 mx-auto max-w-max py-8 px-16 bg-neutral-100 rounded shadow-xl">
     <div>
       <%= form.label :start_date, "Start:", class: "mr-2 font-bold" %>
       <%= form.date_field :start_date %>
@@ -23,7 +23,7 @@
     </h2>
 
     <% days.each do |day| %>
-      <div class="py-6 px-24 flex flex-wrap justify-between gap-4 bg-<%= day.color %>">
+      <div class="py-6 px-6 sm:px-24 flex flex-wrap justify-between gap-4 bg-<%= day.color %>">
         <div>
           <h3 class="mb-4 font-bold text-2xl underline">
             <a href="<%= day_path(day) %>">

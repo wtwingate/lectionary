@@ -25,7 +25,7 @@ class Passage < ApplicationRecord
     esv = Esv.new(reference)
 
     self.esv_text = esv.fetch_text
-    self.esv_html = esv.fetch_html
+    self.esv_html = "<h2>#{reference}</h2>" + esv.fetch_html
   end
 
   def fetch_psalm
@@ -33,7 +33,7 @@ class Passage < ApplicationRecord
       number = reference.delete_prefix("Psalm ").split(":")[0]
       psalm = Psalm.find_by(number: number)
       self.psalm_text = psalm.get_text(reference)
-      self.psalm_html = psalm.get_html(reference)
+      self.psalm_html = "<h2>#{reference}</h2>" + psalm.get_html(reference)
     end
   end
 end
