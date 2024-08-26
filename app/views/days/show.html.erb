@@ -22,9 +22,9 @@
   <div class="[&>p]:my-4">
     <% @day.lessons.each do |lesson| %>
       <h2 class="mt-8 text-2xl font-bold text-<%= @day.color %>">
-        <%= lesson.references.first %>
+        <%= lesson.passages.first.reference %>
       </h2>
-      <%= lesson.passages.first.html.html_safe %>
+      <%= lesson.passages.first.get_html.html_safe %>
     <% end %>
   </div>
 

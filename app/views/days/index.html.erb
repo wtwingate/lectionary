@@ -37,7 +37,9 @@
         <div>
           <ul>
             <% day.lessons.each do |lesson| %>
-              <li class="list-disc list-inside"><%= lesson.print_references %></li>
+              <li class="list-disc list-inside">
+                <%= lesson.references %>
+              </li>
             <% end %>
           </ul>
         </div>

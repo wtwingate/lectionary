@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_24_215152) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_24_214911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_24_215152) do
   end
 
   create_table "lessons", force: :cascade do |t|
-    t.string "references", array: true
+    t.string "references"
     t.bigint "day_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,11 +45,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_24_215152) do
     t.string "reference"
     t.text "esv_text"
     t.text "esv_html"
+    t.text "psalm_text"
+    t.text "psalm_html"
     t.bigint "lesson_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "psalm_text"
-    t.text "psalm_html"
     t.index ["lesson_id"], name: "index_passages_on_lesson_id"
   end
 

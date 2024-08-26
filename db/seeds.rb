@@ -31,10 +31,16 @@ lectionary_data.each do |data|
     )
   end
 
-  data["lessons"].each do |lesson|
-    day.lessons.find_or_create_by!(
-      references: lesson
+  data["lessons"].each do |references|
+    lesson = day.lessons.find_or_create_by!(
+      references: references.join(" or ")
     )
+
+    references.each do |reference|
+      lesson.passages.find_or_create_by!(
+        reference: reference
+      )
+    end
   end
 end
 

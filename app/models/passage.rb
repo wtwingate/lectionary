@@ -2,16 +2,20 @@ class Passage < ApplicationRecord
   belongs_to :lesson
 
   validates :reference, presence: true
-  validates :esv_text, presence: true
-  validates :esv_html, presence: true
 
-  before_validation :fetch_esv, :get_psalm
+  def fetch_missing_data
+    if reference.starts_with?("Psalm")
+      fetch_psalm unless psalm_text && psalm_html
+    else
+      fetch_esv unless esv_text && esv_html
+    end
+  end
 
-  def text
+  def get_text
     reference.starts_with?("Psalm") ? psalm_text : esv_text
   end
 
-  def html
+  def get_html
     reference.starts_with?("Psalm") ? psalm_html : esv_html
   end
 
@@ -24,7 +28,7 @@ class Passage < ApplicationRecord
     self.esv_html = esv.fetch_html
   end
 
-  def get_psalm
+  def fetch_psalm
     if reference.starts_with?("Psalm")
       number = reference.delete_prefix("Psalm ").split(":")[0]
       psalm = Psalm.find_by(number: number)

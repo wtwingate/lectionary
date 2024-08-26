@@ -4,6 +4,8 @@ class CreatePassages < ActiveRecord::Migration[7.2]
       t.string :reference
       t.text :esv_text
       t.text :esv_html
+      t.text :psalm_text
+      t.text :psalm_html
       t.references :lesson, null: false, foreign_key: true
 
       t.timestamps

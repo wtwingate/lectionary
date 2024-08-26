@@ -4,10 +4,14 @@ one:
   reference: MyString
   esv_text: MyText
   esv_html: MyText
+  psalm_text: MyText
+  psalm_html: MyText
   lesson: one
 
 two:
   reference: MyString
   esv_text: MyText
   esv_html: MyText
+  psalm_text: MyText
+  psalm_html: MyText
   lesson: two
