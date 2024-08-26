@@ -1,12 +1,25 @@
-<header class="p-8 bg-neutral-100 text-neutral-900 shadow">
-  <div class="container mx-auto flex justify-between">
-    <a href="<%= root_path %>" class="text-xl font-bold">
+<header class="bg-neutral-100 text-neutral-950 shadow">
+  <nav class="nav-bar">
+    <a href="<%= root_path %>" class="nav-logo">
       lectionary2019.com
     </a>
-    <nav class="flex gap-6 text-xl font-bold">
-      <a href="<%= root_path %>">Home</a>
-      <a href="<%= about_path %>">About</a>
-      <a href="<%= resources_path %>">Resources</a>
-    </nav>
-  </div>
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a class="nav-link" href="<%= root_path %>">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= about_path %>">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= resources_path %>">Resources</a>
+      </li>
+    </ul>
+    <div class="hamburger">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </div>
+  </nav>
 </header>
+
+<%= javascript_include_tag "custom/hamburger.js" %>

@@ -5,62 +5,124 @@
 /* Import Merriweather from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
+/* Color of the Day classes */
+
 .bg-violet {
-    @apply bg-violet-600;
-    @apply text-neutral-50;
+  @apply bg-violet-600;
+  @apply text-neutral-50;
 }
 
 .text-violet {
-    @apply bg-neutral-50;
-    @apply text-violet-600;
+  @apply bg-neutral-50;
+  @apply text-violet-600;
 }
 
 .bg-white {
-    @apply bg-neutral-50;
-    @apply text-yellow-600;
+  @apply bg-neutral-50;
+  @apply text-yellow-600;
 }
 
 .text-white {
-    @apply bg-neutral-50;
-    @apply text-yellow-600;
+  @apply bg-neutral-50;
+  @apply text-yellow-600;
 }
 
 .bg-green {
-    @apply bg-green-600;
-    @apply text-neutral-50;
+  @apply bg-green-600;
+  @apply text-neutral-50;
 }
 
 .text-green {
-    @apply bg-neutral-50;
-    @apply text-green-600;
+  @apply bg-neutral-50;
+  @apply text-green-600;
 }
 
 .bg-red {
-    @apply bg-red-600;
-    @apply text-neutral-50;
+  @apply bg-red-600;
+  @apply text-neutral-50;
 }
 
 .text-red {
-    @apply bg-neutral-50;
-    @apply text-red-600;
+  @apply bg-neutral-50;
+  @apply text-red-600;
 }
 
 .bg-blue {
-    @apply bg-blue-600;
-    @apply text-neutral-50;
+  @apply bg-blue-600;
+  @apply text-neutral-50;
 }
 
 .text-blue {
-    @apply bg-neutral-50;
-    @apply text-blue-600;
+  @apply bg-neutral-50;
+  @apply text-blue-600;
 }
 
 .bg-rose {
-    @apply bg-rose-400;
-    @apply text-neutral-50;
+  @apply bg-rose-400;
+  @apply text-neutral-50;
 }
 
 .text-rose {
-    @apply bg-neutral-50;
-    @apply text-rose-400;
+  @apply bg-neutral-50;
+  @apply text-rose-400;
+}
+
+/* Hamburger menu classes */
+
+.nav-bar {
+  @apply flex justify-between items-center py-4 px-6;
+}
+
+.hamburger {
+  @apply hidden;
+}
+
+.hamburger-bar {
+  @apply block w-6 h-1 mx-auto my-1 transition ease-in-out duration-300 bg-neutral-950;
+}
+
+.nav-menu {
+  @apply flex justify-between items-center;
+}
+
+.nav-item {
+  @apply ml-4;
+}
+
+.nav-link {
+  @apply text-xl font-bold text-neutral-600 hover:text-neutral-950;
+}
+
+.nav-logo {
+  @apply text-2xl font-bold;
+}
+
+@media only screen and (max-width: 640px) {
+  .nav-menu {
+    @apply fixed -left-full top-16 flex-col bg-neutral-50 w-full rounded text-center transition duration-300 shadow;
+  }
+
+  .nav-menu.active {
+    @apply left-0;
+  }
+
+  .nav-item {
+    @apply my-4;
+  }
+
+  .hamburger {
+    @apply block cursor-pointer;
+  }
+
+  .hamburger.active .hamburger-bar:nth-child(2) {
+    @apply opacity-0;
+  }
+
+  .hamburger.active .hamburger-bar:nth-child(1) {
+    @apply translate-y-2 rotate-45;
+  }
+
+  .hamburger.active .hamburger-bar:nth-child(3) {
+    @apply -translate-y-2 -rotate-45;
+  }
 }

@@ -1,18 +1,18 @@
-<h1 class="my-24 text-6xl font-bold text-center">The Lectionary</h1>
+<h1 class="my-16 text-6xl font-bold text-center">The Lectionary</h1>
 
 <%= form_with url: "/search", method: :get do |form| %>
-  <div class="flex flex-wrap gap-8 justify-center mt-24 mb-8 mx-auto max-w-max py-8 px-16 bg-neutral-100 rounded shadow-xl">
-    <div>
+  <div class="flex flex-col sm:flex-row gap-8 justify-center mt-16 mb-8 mx-auto max-w-fit py-4 px-12 bg-neutral-100 rounded shadow-xl">
+    <div class="flex flex-nowrap justify-between items-center">
       <%= form.label :start_date, "Start:", class: "mr-2 font-bold" %>
       <%= form.date_field :start_date %>
     </div>
-    <div>
+    <div clas="flex flex-nowrap justify-between items-center">
       <%= form.label :end_date, "End:", class: "mr-2 font-bold" %>
       <%= form.date_field :end_date %>
     </div>
   </div>
   <div class="max-w-max mx-auto ">
-    <%= form.submit "Search", class: "cursor-pointer py-2 px-8 bg-neutral-950 text-neutral-50 text-xl font-bold shadow rounded" %>
+    <%= form.submit "Search", class: "cursor-pointer py-2 px-8 text-neutral-50 bg-neutral-600 hover:bg-neutral-950 text-xl font-bold shadow rounded" %>
   </div>
 <% end %>
 
@@ -23,7 +23,7 @@
     </h2>
 
     <% days.each do |day| %>
-      <div class="py-6 px-6 sm:px-24 flex flex-wrap justify-between gap-4 bg-<%= day.color %>">
+      <div class="py-4 px-12 flex flex-wrap justify-between gap-4 bg-<%= day.color %>">
         <div>
           <h3 class="mb-4 font-bold text-2xl underline">
             <a href="<%= day_path(day) %>">
