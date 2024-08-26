@@ -17,7 +17,7 @@ class EasterTest < ActiveSupport::TestCase
     ]
 
     easter_dates.each do |date|
-      assert_equal(date, Date.easter(date.year, 3))
+      assert_equal(date, Easter.easter(date.year, 3))
     end
   end
 end

@@ -24,7 +24,7 @@ class Calendar
   end
 
   def calc_moveable
-    easter = Date.easter(@date.year, 3)
+    easter = Easter.easter(@date.year, 3)
     advent = @fixed[:christmas].prev_occurring(:sunday) - 3.weeks
 
     {
