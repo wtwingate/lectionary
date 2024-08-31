@@ -23,27 +23,28 @@
     </h2>
 
     <% days.each do |day| %>
-      <div class="py-4 px-12 flex flex-wrap justify-between gap-4 bg-<%= day.color %>">
-        <div>
-          <h3 class="mb-4 font-bold text-2xl underline">
-            <a href="<%= day_path(day) %>">
+      <%= link_to day do %>
+        <hr>
+        <div class="py-4 px-12 flex flex-wrap justify-between gap-4 bg-<%= day.color %>">
+          <div>
+            <h3 class="mb-4 font-bold text-2xl">
               <%= day.name %><%= ": #{day.service}" if day.service %>
-            </a>
-          </h3>
-          <p><%= "Year #{day.year}" %></p>
-          <p><%= day.season %></p>
-        </div>
+            </h3>
+            <p><%= "Year #{day.year}" %></p>
+            <p><%= day.season %></p>
+          </div>
 
-        <div>
-          <ul>
-            <% day.lessons.each do |lesson| %>
-              <li class="list-disc list-inside">
-                <%= lesson.references %>
-              </li>
-            <% end %>
-          </ul>
+          <div>
+            <ul>
+              <% day.lessons.each do |lesson| %>
+                <li class="list-disc list-inside">
+                  <%= lesson.references %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 <% end %>
