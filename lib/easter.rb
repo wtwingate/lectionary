@@ -1,6 +1,6 @@
 require "date"
 
-class Easter
+module Easter
   def self.easter(year, method)
     # Calculates the date of Easter for the given year using three
     # different methods:
