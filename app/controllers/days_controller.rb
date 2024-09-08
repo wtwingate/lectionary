@@ -32,6 +32,9 @@ class DaysController < ApplicationController
     @lessons_html = []
     @lessons_text = []
 
+    @lessons_text << "Collect of the Day"
+    @lessons_text << @day.collects.first.text
+
     @day.lessons.each do |lesson|
       lesson.passages.each { |passage| passage.fetch_missing_data }
 
