@@ -9,6 +9,7 @@ class Passage < ApplicationRecord
     else
       fetch_esv unless esv_text && esv_html
     end
+    self.save
   end
 
   def get_text
