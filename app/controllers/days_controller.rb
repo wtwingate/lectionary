@@ -16,13 +16,14 @@ class DaysController < ApplicationController
     @results = {}
     calendars.each do |calendar|
       next if calendar.days.empty?
+      @results[calendar.date] = []
 
       calendar.days.each do |name|
         days = Day.where(name: name, year: calendar.year)
         days.each do |day|
           day[:season] = calendar.season if day[:season].nil?
+          @results[calendar.date] << day
         end
-        @results[calendar.date] = days
       end
     end
   end
