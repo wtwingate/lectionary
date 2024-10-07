@@ -86,7 +86,7 @@
 }
 
 .nav-item {
-  @apply ml-4;
+  @apply ml-8;
 }
 
 .nav-link {

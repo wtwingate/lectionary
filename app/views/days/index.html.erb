@@ -1,14 +1,14 @@
 <h1 class="my-16 text-6xl font-bold text-center">The Lectionary</h1>
 
 <%= form_with url: "/search", method: :get do |form| %>
-  <div class="flex flex-col sm:flex-row gap-8 justify-center mt-16 mb-8 mx-auto max-w-fit py-4 px-12 bg-neutral-100 rounded shadow-xl">
-    <div class="flex flex-nowrap justify-between items-center">
-      <%= form.label :start_date, "Start:", class: "mr-2 font-bold" %>
-      <%= form.date_field :start_date %>
+  <div class="flex flex-col sm:flex-row gap-8 justify-center mt-16 mb-8 mx-auto max-w-96 sm:max-w-max py-4 px-12 bg-neutral-100 rounded shadow-xl">
+    <div class="flex flex-nowrap justify-between sm:justify-around items-center">
+      <%= form.label :start_date, "Start", class: "mr-2 text-xl font-bold" %>
+      <%= form.date_field :start_date, class: "min-w-max" %>
     </div>
-    <div clas="flex flex-nowrap justify-between items-center">
-      <%= form.label :end_date, "End:", class: "mr-2 font-bold" %>
-      <%= form.date_field :end_date %>
+    <div class="flex flex-nowrap justify-between sm:justify-around items-center">
+      <%= form.label :end_date, "End", class: "mr-2 text-xl font-bold" %>
+      <%= form.date_field :end_date, class: "min-w-max" %>
     </div>
   </div>
   <div class="max-w-max mx-auto ">
