@@ -1,16 +1,16 @@
 class DaysController < ApplicationController
   def index
-    start_date = Date.today()
+    @start_date = Date.today()
     unless params[:start_date].nil? || params[:start_date].empty?
-      start_date = Date.parse(params[:start_date])
+      @start_date = Date.parse(params[:start_date])
     end
 
-    end_date = start_date + 4.weeks
+    @end_date = @start_date + 4.weeks
     unless params[:end_date].nil? || params[:end_date].empty?
-      end_date = Date.parse(params[:end_date])
+      @end_date = Date.parse(params[:end_date])
     end
 
-    dates = (start_date..end_date).to_a
+    dates = (@start_date..@end_date).to_a
     calendars = dates.map { |date| Calendar.new(date) }
 
     @results = {}
